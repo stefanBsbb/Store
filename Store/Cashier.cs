@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Store
 {
-    internal class Cashier
+    public class Cashier
     {
+        public void PrintReceipt(Cart cart) 
+        {
+            
+        }
     }
 }

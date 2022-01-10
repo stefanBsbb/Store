@@ -8,6 +8,6 @@ namespace Store.Models.Abstractions
 {
     public abstract class BaseCart
     {
-        public virtual List<Products> Cart { get; set; }
+        public virtual List<Products> cart { get; set; }
     }
 }
