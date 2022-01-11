@@ -46,6 +46,7 @@ public class Cashier
                     }
 
                 }
+
                 if (item.Discount() > 0)
                 {
                     double a = Decimal.ToDouble(item.Price);
@@ -71,13 +72,10 @@ public class Cashier
     public static Cart PrepCart()
     {
         Cart cart = new Cart();
-        if (cart != null)
-        {
-            cart.AddItems();
-            EntityTypeCounter counter = cart.cart.Aggregate(
-                new EntityTypeCounter(),
-                (acc, item) => { item.Accept(acc); return acc; });            
-        }
+        cart.AddItems();
+        EntityTypeCounter counter = cart.cart.Aggregate(
+            new EntityTypeCounter(),
+            (acc, item) => { item.Accept(acc); return acc; });
         return cart;
     }
 }

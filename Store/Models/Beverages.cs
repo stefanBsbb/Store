@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Store.Models
 {
-    public class Beverages : IProduct
+    public class Beverages : IProduct, IExpired
     {
         [DoNotInclude]
         [Required]
@@ -32,6 +32,16 @@ namespace Store.Models
         {
             visitor.Visit(this);
         }
+
+        public bool Expired()
+        {
+            if (this.ExpirationDate < DateTime.Now)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public Beverages(string name, string brand, decimal price, double quantity, DateTime expirationDate)
         {
             this.ExpirationDate = expirationDate;
