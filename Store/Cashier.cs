@@ -3,7 +3,7 @@ using Store.Attributes;
 using Store.Models;
 using Store.Models.Abstractions;
 
-public class Program
+public class Cashier
 {
     static void Main(string[] args)
     {
