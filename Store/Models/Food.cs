@@ -1,4 +1,5 @@
-﻿using Store.Models.Abstractions;
+﻿using Store.Abstractions;
+using Store.Models.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,28 @@ namespace Store.Models
     {
         public DateTime ExpirationDate { get; set; }
 
-        public string Name => throw new NotImplementedException();
+        public override int Discount()
+        {
+            DateTime.Now.ToString("yyyy,MM,dd");
+            if (this.ExpirationDate.Day == DateTime.Now.Day)
+            {
+                return 50;
+            }
+            else if (this.ExpirationDate < DateTime.Now.AddDays(5))
+                return 10; 
+            return 0;
+        }
+        public override void Accept(EntityVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
 
-        public string Brand => throw new NotImplementedException();
-
-        public int Price => throw new NotImplementedException();
-
-        public int Id => throw new NotImplementedException();
-
-        int IProduct.Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public Food(DateTime expirationDate) 
+        public Food(string name, string brand, decimal price, DateTime expirationDate)
         {
             this.ExpirationDate = expirationDate;
+            this.Price = price;
+            this.Brand = brand;
+            this.Name = name;
         }
     }
 }

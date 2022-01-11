@@ -4,7 +4,6 @@ C:\Users\sayby\source\repos\Store\Store\bin\Debug\net6.0\Store.runtimeconfig.jso
 C:\Users\sayby\source\repos\Store\Store\bin\Debug\net6.0\Store.dll
 C:\Users\sayby\source\repos\Store\Store\bin\Debug\net6.0\ref\Store.dll
 C:\Users\sayby\source\repos\Store\Store\bin\Debug\net6.0\Store.pdb
-C:\Users\sayby\source\repos\Store\Store\obj\Debug\net6.0\Store.csproj.AssemblyReference.cache
 C:\Users\sayby\source\repos\Store\Store\obj\Debug\net6.0\Store.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\sayby\source\repos\Store\Store\obj\Debug\net6.0\Store.AssemblyInfoInputs.cache
 C:\Users\sayby\source\repos\Store\Store\obj\Debug\net6.0\Store.AssemblyInfo.cs
@@ -13,3 +12,4 @@ C:\Users\sayby\source\repos\Store\Store\obj\Debug\net6.0\Store.dll
 C:\Users\sayby\source\repos\Store\Store\obj\Debug\net6.0\ref\Store.dll
 C:\Users\sayby\source\repos\Store\Store\obj\Debug\net6.0\Store.pdb
 C:\Users\sayby\source\repos\Store\Store\obj\Debug\net6.0\Store.genruntimeconfig.cache
+C:\Users\sayby\source\repos\Store\Store\obj\Debug\net6.0\Store.csproj.AssemblyReference.cache

@@ -1,4 +1,5 @@
-﻿using Store.Models.Abstractions;
+﻿using Store.Abstractions;
+using Store.Models.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +11,33 @@ namespace Store.Models
     public class Appliances : IProduct
     {
         public string Model { get; set; }
-        public string ProductionDate { get; set; }
-        public string Weight { get; set; }
+        public DateTime ProductionDate { get; set; }
+        public double Weight { get; set; }
 
 
+        public override int Discount()
+        {
+            DayOfWeek currentDay = DateTime.Now.DayOfWeek;
+            if (this.Price > 999 && (currentDay == DayOfWeek.Saturday || currentDay == DayOfWeek.Sunday))
+            {
+                return 5;
+            }
+            return 0;
+        }
 
-        public Appliances(string weight, string productionDate, string model, string name, int id, int price, string brand) 
+        public override void Accept(EntityVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public Appliances(string name, string brand, decimal price, string model, DateTime productionDate, double weight)
         {
             this.Weight = weight;
             this.ProductionDate = productionDate;
             this.Model = model;
             this.Price = price;
+            this.Brand = brand;
             this.Name = name;
-            this.Id = id;
         }
     }
 }
