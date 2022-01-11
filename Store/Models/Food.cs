@@ -1,4 +1,5 @@
 ﻿using Store.Abstractions;
+using Store.Attributes;
 using Store.Models.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,9 @@ namespace Store.Models
 {
     public class Food : IProduct
     {
+        [DoNotInclude]
         public DateTime ExpirationDate { get; set; }
+        
 
         public override int Discount()
         {
@@ -20,7 +23,7 @@ namespace Store.Models
                 return 50;
             }
             else if (this.ExpirationDate < DateTime.Now.AddDays(5))
-                return 10; 
+                return 10;
             return 0;
         }
         public override void Accept(EntityVisitor visitor)
@@ -28,12 +31,14 @@ namespace Store.Models
             visitor.Visit(this);
         }
 
-        public Food(string name, string brand, decimal price, DateTime expirationDate)
+        public Food(string name, string brand, decimal price, double quantity, DateTime expirationDate)
         {
             this.ExpirationDate = expirationDate;
             this.Price = price;
             this.Brand = brand;
             this.Name = name;
+            this.Quantity = quantity;
+            this.TotalPrice = Convert.ToDecimal(Quantity) * Price;
         }
     }
 }

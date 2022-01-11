@@ -14,12 +14,11 @@ namespace Store
 
         public void AddItems()
         {
-            Clothes clothe = new Clothes("T-Shirt", "BrandT", new decimal(15.99), "M", "violet");
-            Appliances appli = new Appliances("laptop", "BrandL", 2345, "ModelL", new DateTime(2021, 03, 03), 1.125);
-            Food food = new Food("apples", "BrandA", new decimal(1.5), new DateTime(2022, 01, 11));
-            Beverages bev = new Beverages("milk", "BrandM", new decimal(0.99), new DateTime(2022, 02, 02));
-
-            cart.AddRange(new List<IProduct> { clothe, clothe, bev, bev, bev, food, food, appli });
+            IProduct clothe = new Clothes("T-Shirt", "BrandT", new decimal(15.99), 2, "M", "violet");
+            IProduct appli = new Appliances("laptop", "BrandL", 2345, "ModelL", 1, new DateTime(2021, 03, 03), 1.125);
+            IProduct food = new Food("apples", "BrandA", new decimal(1.5), 2.45, new DateTime(2022, 01, 11));
+            IProduct bev = new Beverages("milk", "BrandM", new decimal(0.99), 3, new DateTime(2022, 02, 02));
+            cart.AddRange(new List<IProduct> { clothe, bev, food, appli });
         }
 
         public DateTime GetPurchaseDate()
@@ -30,27 +29,14 @@ namespace Store
         public decimal TotalSum()
         {
             decimal sum = 0;
+            
             foreach (var item in cart)
             {
-                sum = sum + item.Price;
+                sum = sum + item.TotalPrice;
             }
             return sum;
-        }
-        public double TotalDiscount() 
-        {
-            double totalDiscount = 0;
-            var uniqueItemsList = cart.Distinct().ToList();
-            foreach (var item in uniqueItemsList)
-            {
-                double a = Decimal.ToDouble(item.Price);
-                double b = Convert.ToDouble(item.Discount());
-                if (item.Discount() > 0)
-                {
-                    totalDiscount = a * (b/100);
-                }
-            }
-            return totalDiscount;
-        }
+        }      
+
 
     }
 }

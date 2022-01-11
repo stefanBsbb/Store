@@ -26,13 +26,15 @@ namespace Store.Models
         {
             visitor.Visit(this);
         }
-        public Clothes(string name, string brand, decimal price, string size, string color)
+        public Clothes(string name, string brand, decimal price, double quantity, string size, string color)
         {
             this.Size = size;
             this.Color = color;
             this.Brand = brand;
             this.Price = price;
             this.Name = name;
+            this.Quantity = quantity;
+            this.TotalPrice = Convert.ToDecimal(Quantity) * Price;
         }
     }
 }

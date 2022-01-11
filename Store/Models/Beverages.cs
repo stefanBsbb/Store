@@ -1,4 +1,5 @@
 ﻿using Store.Abstractions;
+using Store.Attributes;
 using Store.Models.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace Store.Models
 {
     public class Beverages : IProduct
     {
+        [DoNotInclude]
         public DateTime ExpirationDate { get; set; }
 
 
@@ -27,12 +29,14 @@ namespace Store.Models
         {
             visitor.Visit(this);
         }
-        public Beverages(string name, string brand, decimal price, DateTime expirationDate)
+        public Beverages(string name, string brand, decimal price, double quantity, DateTime expirationDate)
         {
             this.ExpirationDate = expirationDate;
             this.Price = price;
             this.Brand = brand;
             this.Name = name;
+            this.Quantity = quantity;
+            this.TotalPrice = Convert.ToDecimal(Quantity) * Price;
         }
     }
 }

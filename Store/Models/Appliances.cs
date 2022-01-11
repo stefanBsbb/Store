@@ -1,4 +1,5 @@
 ﻿using Store.Abstractions;
+using Store.Attributes;
 using Store.Models.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Store.Models
     public class Appliances : IProduct
     {
         public string Model { get; set; }
+        [DoNotInclude]
         public DateTime ProductionDate { get; set; }
         public double Weight { get; set; }
 
@@ -30,7 +32,7 @@ namespace Store.Models
             visitor.Visit(this);
         }
 
-        public Appliances(string name, string brand, decimal price, string model, DateTime productionDate, double weight)
+        public Appliances(string name, string brand, decimal price, string model, double quantity, DateTime productionDate, double weight)
         {
             this.Weight = weight;
             this.ProductionDate = productionDate;
@@ -38,6 +40,8 @@ namespace Store.Models
             this.Price = price;
             this.Brand = brand;
             this.Name = name;
+            this.Quantity = quantity;
+            this.TotalPrice = Convert.ToDecimal(Quantity) * Price;
         }
     }
 }
