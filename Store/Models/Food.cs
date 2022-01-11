@@ -3,6 +3,7 @@ using Store.Attributes;
 using Store.Models.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace Store.Models
 {
     public class Food : IProduct
     {
+        [Required]
         [DoNotInclude]
         public DateTime ExpirationDate { get; set; }
         

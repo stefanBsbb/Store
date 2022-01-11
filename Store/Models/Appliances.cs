@@ -3,6 +3,7 @@ using Store.Attributes;
 using Store.Models.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,12 @@ namespace Store.Models
 {
     public class Appliances : IProduct
     {
+        [Required]
         public string Model { get; set; }
+        [Required]
         [DoNotInclude]
         public DateTime ProductionDate { get; set; }
+        [Required]
         public double Weight { get; set; }
 
 

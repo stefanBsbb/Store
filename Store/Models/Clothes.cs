@@ -2,6 +2,7 @@
 using Store.Models.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,10 @@ namespace Store.Models
 {
     public class Clothes : IProduct
     {
+        [Required]
+        [RegularExpression(@"^(\d*(?:M|X{0,2}[SL]))(?:$|\s+.*$)")]
         public string Size { get; set; }
+        [Required]
         public string Color { get; set; }
 
         public override int Discount()
