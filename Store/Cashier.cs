@@ -44,9 +44,7 @@ public class Cashier
                     {
                         Console.Write(prop.GetValue(item) + "  ");
                     }
-
                 }
-
                 if (item.Discount() > 0)
                 {
                     double a = Decimal.ToDouble(item.Price);
@@ -57,7 +55,6 @@ public class Cashier
                     Console.WriteLine();
                     Console.WriteLine("#discount " + item.Discount() + "%  - $" + Math.Round(itemDiscount, 2, MidpointRounding.AwayFromZero));
                 }
-
                 Console.WriteLine();
                 Console.WriteLine();
             }
@@ -67,7 +64,6 @@ public class Cashier
             decimal totalPriceWithDiscount = cart.TotalSum() - Convert.ToDecimal(totalDiscount);
             Console.WriteLine("TOTAL: $" + Math.Round(totalPriceWithDiscount, 2, MidpointRounding.AwayFromZero));
         }
-
     }
     public static Cart PrepCart()
     {
